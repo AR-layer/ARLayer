@@ -13,7 +13,6 @@ public class MapUserWay : MonoBehaviour
         var changeAreaComponent = GameObject.Find(btnName);
         MeshRenderer meshRenderer = changeAreaComponent.GetComponent<MeshRenderer>();
         Material oldMaterial = meshRenderer.material;
-        Debug.Log("Applied Material: " + oldMaterial.name);
         meshRenderer.material = newMaterial;
     }
 }
