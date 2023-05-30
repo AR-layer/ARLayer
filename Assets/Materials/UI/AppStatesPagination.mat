@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OnboardingProgressSteps
+  m_Name: AppStatesPagination
   m_Shader: {fileID: -6465566751694194690, guid: 1d9005a2a2bc751419d8a89a765b6d3a,
     type: 3}
   m_ValidKeywords: []
@@ -99,11 +99,11 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     - _alpha: 0.698
-    - _count: 5
-    - _fieldSize: 0.6
-    - _index: 0.21368794
+    - _count: 2
+    - _fieldSize: 2
+    - _index: -0.00000004232674
     - _index_field_size: 0.75
-    - _stepColor: 0.15
+    - _stepColor: 0.04
     - _steps: 5
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 1}
