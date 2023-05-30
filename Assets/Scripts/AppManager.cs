@@ -6,9 +6,10 @@ public class AppManager : MonoBehaviour
 
     public void Go()
     {
-        //int contentLength = appConfig.content.Length;
-        //int startId = 0;
-        var content = Resources.Load<GameObject>(appConfig.content[0].textContent);
+        int contentLength = appConfig.content.Length;
+        Debug.Log(contentLength);
+        var content = Resources.Load(appConfig.content[0].textContent);
+        Instantiate(content);
         Debug.Log(appConfig.content[0].textContent);
         Debug.Log(appConfig.content[1].textContent);
         //if (startId == 0)
@@ -19,7 +20,7 @@ public class AppManager : MonoBehaviour
         //        Instantiate(content);
         //    }
         //}
-        //if ((startId >= 2) && (startId <= contentLength - 2))
+        //if ((startId >= 2) || (startId <= contentLength - 2))
         //{
         //    for (int i = startId - 2; i < startId + 2; i++)
         //    {

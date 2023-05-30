@@ -13,5 +13,4 @@ public class Content
     public string id;
     public string person;
     public string textContent;
-    //public string path;
 }
