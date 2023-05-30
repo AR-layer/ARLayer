@@ -7,7 +7,7 @@ class StateContext
 
     public void TransitionTo(State state)
     {
-        Console.WriteLine($"ѕереход в состо€ние:{state.ToString()}");
+        Console.WriteLine($"Transition to state:{state.ToString()}");
         currState = state;
     }   
 
@@ -39,12 +39,12 @@ class Navigation : State
 {
     public override void Handle1()
     {
-        Console.WriteLine("—осто€ние навигации обрабатывает первый запрос");
+        Console.WriteLine("The navigation state processes the first request");
     }
 
     public override void Handle2()
     {
-        Console.WriteLine("¬ыпол€етс€ переход в состо€ние поиска маркера");
+        Console.WriteLine("Transition to marker search state");
         _context.TransitionTo(new Scanning());
     }
 }
@@ -53,12 +53,12 @@ class Scanning : State
 {
     public override void Handle1()
     {
-        Console.WriteLine("—осто€ние сканировани€ обрабатывает первый запрос");
+        Console.WriteLine("The scan state is processing the first request");
     }
 
     public override void Handle2()
     {
-        Console.WriteLine("¬ыпол€етс€ переход в состо€ние навигации");
+        Console.WriteLine("Transition to navigation state in progress");
         _context.TransitionTo(new Navigation());
     }
 }

@@ -439,7 +439,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1752803343}
         m_TargetAssemblyTypeName: AppManager, Assembly-CSharp
-        m_MethodName: Go
+        m_MethodName: LoadResourcesButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -499,7 +499,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbcb95ef8dfa7f45adcbca33e539228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  appConfig: {fileID: 11400000, guid: d107cda551dea9e46bf9308bac641cc8, type: 2}
+  appConfig: {fileID: 11400000, guid: bc55526656b84984d9ee12c363ef2071, type: 2}
+  id: {fileID: 1235841639}
+  author: {fileID: 0}
+  text: {fileID: 0}
 --- !u!1 &1782675124
 GameObject:
   m_ObjectHideFlags: 0

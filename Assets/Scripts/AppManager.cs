@@ -1,41 +1,32 @@
+using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AppManager : MonoBehaviour
 {
-    public AppConfig appConfig;
+    [SerializeField] private AppConfig appConfig;
+    [SerializeField] private GameObject id;
+    [SerializeField] private GameObject author;
+    [SerializeField] private GameObject text;
 
-    public void Go()
+    public void LoadResources(string className)
     {
-        int contentLength = appConfig.content.Length;
-        Debug.Log(contentLength);
-        var content = Resources.Load(appConfig.content[0].textContent);
-        Instantiate(content);
-        Debug.Log(appConfig.content[0].textContent);
-        Debug.Log(appConfig.content[1].textContent);
-        //if (startId == 0)
-        //{
-        //    for (int i = startId; i < startId + 4; i++)
-        //    {
-        //        var content = Resources.Load<GameObject>(appConfig.content[startId].textContent);
-        //        Instantiate(content);
-        //    }
-        //}
-        //if ((startId >= 2) || (startId <= contentLength - 2))
-        //{
-        //    for (int i = startId - 2; i < startId + 2; i++)
-        //    {
-        //        var content = Resources.Load<GameObject>(appConfig.content[startId].textContent);
-        //        Instantiate(content);
-        //    }
-        //}
-        //else
-        //{
-        //    for (int i = startId - 1; i < contentLength - 1; i++)
-        //    {
-        //        var content = Resources.Load<GameObject>(appConfig.content[startId].textContent);
-        //        Instantiate(content);
-        //    }
-        //}
+        int number = Convert.ToInt32(className.Substring(className.IndexOf("-") + 1));
+        appConfig = Resources.Load<AppConfig>("Data/AppConfig1");
+        var text = id.GetComponent<TextMeshProUGUI>();
+        text.text = appConfig.content[number].id;
+        Debug.Log(text.text);
+    }
+
+    public void LoadResourcesButton()
+    {
+        string s = "it-6";
+        int number = Convert.ToInt32(s.Substring(s.IndexOf("-") + 1));
+        appConfig = Resources.Load<AppConfig>("Data/AppConfig1");
+        var text = id.GetComponent<TextMeshProUGUI>();
+        text.text = appConfig.content[1].id;
+        Debug.Log(text.text);
     }
 }
 
