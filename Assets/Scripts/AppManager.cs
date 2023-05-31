@@ -11,7 +11,7 @@ public class AppManager : MonoBehaviour
 
     public void LoadResources(string className)
     {
-        int number = Convert.ToInt32(className.Substring(className.IndexOf("-") + 1));
+        int number = GetClassNumber(className);
         appConfig = Resources.Load<AppConfig>("Data/AppConfig1");
         var idText = id.GetComponent<TextMeshProUGUI>();
         var authorName = author.GetComponent<TextMeshProUGUI>();
@@ -19,6 +19,12 @@ public class AppManager : MonoBehaviour
         idText.text = appConfig.content[number].id;
         authorName.text = appConfig.content[number].person;
         textCont.text = appConfig.content[number].textContent;
+    }
+
+    private int GetClassNumber(string className)
+    {
+        int number = Convert.ToInt32(className.Substring(className.IndexOf("-") + 1));
+        return number;
     }
 
     public void LoadResourcesButton()
