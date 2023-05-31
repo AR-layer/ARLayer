@@ -7462,6 +7462,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4339539407997498495, guid: 51353e50d6e88cc40bed2a794a6a6e37,
+        type: 3}
+      propertyPath: m_Name
+      value: id
+      objectReference: {fileID: 0}
     - target: {fileID: 4339539408555636483, guid: 51353e50d6e88cc40bed2a794a6a6e37,
         type: 3}
       propertyPath: m_Pivot.x
@@ -7577,8 +7582,53 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4339539409515362863, guid: 51353e50d6e88cc40bed2a794a6a6e37,
+        type: 3}
+      propertyPath: m_Name
+      value: AuthorName
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51353e50d6e88cc40bed2a794a6a6e37, type: 3}
+--- !u!1 &1511308392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4339539408723418532, guid: 51353e50d6e88cc40bed2a794a6a6e37,
+    type: 3}
+  m_PrefabInstance: {fileID: 1511308391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1511308393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4339539409515362863, guid: 51353e50d6e88cc40bed2a794a6a6e37,
+    type: 3}
+  m_PrefabInstance: {fileID: 1511308391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1511308394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4339539407997498495, guid: 51353e50d6e88cc40bed2a794a6a6e37,
+    type: 3}
+  m_PrefabInstance: {fileID: 1511308391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1511308395 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4339539409111571695, guid: 51353e50d6e88cc40bed2a794a6a6e37,
+    type: 3}
+  m_PrefabInstance: {fileID: 1511308391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1511308396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511308395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cbcb95ef8dfa7f45adcbca33e539228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appConfig: {fileID: 0}
+  id: {fileID: 1511308394}
+  author: {fileID: 1511308393}
+  text: {fileID: 1511308392}
 --- !u!1 &1545691998
 GameObject:
   m_ObjectHideFlags: 0
