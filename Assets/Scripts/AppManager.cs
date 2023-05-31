@@ -24,7 +24,8 @@ public class AppManager : MonoBehaviour
         int number = Convert.ToInt32(s.Substring(s.IndexOf("-") + 1));
         appConfig = Resources.Load<AppConfig>("Data/AppConfig1");
         var text = id.GetComponent<TextMeshProUGUI>();
-        text.text = appConfig.content[number - 5].id;
+        Debug.Log(text);
+        text.text = appConfig.content[number-4].person;
         Debug.Log(text.text);
     }
 }
