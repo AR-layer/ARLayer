@@ -13,8 +13,12 @@ public class AppManager : MonoBehaviour
     {
         int number = Convert.ToInt32(className.Substring(className.IndexOf("-") + 1));
         appConfig = Resources.Load<AppConfig>("Data/AppConfig1");
-        var text = id.GetComponent<TextMeshProUGUI>();
-        text.text = appConfig.content[number].id;
+        var idText = id.GetComponent<TextMeshProUGUI>();
+        var authorName = author.GetComponent<TextMeshProUGUI>();
+        var textCont = text.GetComponent<TextMeshProUGUI>();
+        idText.text = appConfig.content[number].id;
+        authorName.text = appConfig.content[number].person;
+        textCont.text = appConfig.content[number].textContent;
     }
 
     public void LoadResourcesButton()
