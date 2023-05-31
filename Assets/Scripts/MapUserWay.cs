@@ -9,8 +9,8 @@ public class MapUserWay : MonoBehaviour
 
     public void ShowTargetRoom()
     {
-        var btnName = EventSystem.current.currentSelectedGameObject.name;
-        var changeAreaComponent = GameObject.Find(btnName);
+        string btnName = EventSystem.current.currentSelectedGameObject.name.TrimEnd('B');
+        GameObject changeAreaComponent = GameObject.Find(btnName);
         MeshRenderer meshRenderer = changeAreaComponent.GetComponent<MeshRenderer>();
         Material oldMaterial = meshRenderer.material;
         Debug.Log("Applied Material: " + oldMaterial.name);
