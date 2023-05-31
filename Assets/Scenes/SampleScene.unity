@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44402185, g: 0.49316466, b: 0.57223153, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -506,10 +506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d484737d4aab346448e3eb7d592d00f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedImageManager: {fileID: 0}
-  textElement: {fileID: 0}
-  m_WorldSpaceCanvasCamera: {fileID: 22732920}
-  m_DefaultTexture: {fileID: 2800000, guid: 6925bb5fa61a7f941a2a0ecbf1f03676, type: 3}
 --- !u!114 &388525038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,13 +520,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageTrackedText: {fileID: 1970393289}
   arObjectsToPlace:
-  - {fileID: 1629085502}
-  - {fileID: 1754960520}
-  - {fileID: 924716006}
-  - {fileID: 502597262}
-  - {fileID: 50385890}
-  - {fileID: 866393796}
-  PanelInfo: {fileID: 1572746355}
+  - {fileID: 5338593576791992455, guid: 19ce9943040a2d34d9669e859dc9660e, type: 3}
+  - {fileID: 5604104898937183189, guid: 2589d0a9ef18d1948b7f39eb8c8946d4, type: 3}
+  scaleFactor: {x: 0.1, y: 0.1, z: 0.1}
 --- !u!1 &502597259
 GameObject:
   m_ObjectHideFlags: 0
