@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,12 +21,10 @@ public class Pagination : MonoBehaviour
         material.SetFloat("_index", currentIndex);
     }
 
-    
     void Update()
     {
         currentIndex = scrollRect.horizontalNormalizedPosition * (stepsCount-1);
         material.SetFloat("_index", currentIndex);
     }
-
 }
 

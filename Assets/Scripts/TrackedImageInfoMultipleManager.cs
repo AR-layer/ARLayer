@@ -20,14 +20,15 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
     [SerializeField]
     private MapUserWay mapUserWay;
 
-    private ARTrackedImageManager m_TrackedImageManager;
+    private ARTrackedImageManager TrackedImageManager;
 
     private Dictionary<string, GameObject> arObjects = new Dictionary<string, GameObject>();
 
     private GameObject newARObject;
+
     private void Awake()
     {
-        m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
+        TrackedImageManager = GetComponent<ARTrackedImageManager>();
 
         foreach (GameObject arObject in arObjectsToPlace)
         {
@@ -41,12 +42,12 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
 
     void OnEnable()
     {
-        m_TrackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+        TrackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
     }
 
     void OnDisable()
     {
-        m_TrackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
+        TrackedImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
     }
 
     private static bool IsInList(string name, List<ARTrackedImage> imgs)
@@ -72,9 +73,6 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
             {
                 continue;
             }
-
-            // imageTrackedText.text = "Nothing tracked";
-
             arObject.Value.SetActive(false);
         }
 
@@ -108,37 +106,6 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
             arObjects[trackedImage.referenceImage.name].SetActive(true);
             AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position);
         }
-
-        //imageTrackedText.text = trackedImage.referenceImage.name;
-        /*
-        if (trackedImage.trackingState != TrackingState.None)
-        {
-           
-        }*/
-
-        /*foreach (GameObject go in arObjects.Values)
-        {
-            if (trackedImage.trackingState != TrackingState.None)
-            {
-                go.SetActive(true);
-            }
-            else
-            {
-                go.SetActive(false);
-            }
-        }*/
-
-        /*
-        foreach (GameObject go in arObjects.Values)
-        {
-            //Debug.Log($"Go in arObjects.Values: {go.name}");
-            if (go.name != trackedImage.referenceImage.name)
-            {
-                go.SetActive(false);
-            }
-        }
-        */
-        //Debug.Log($"trackedImage.referenceImage.name: {trackedImage.referenceImage.name}");
     }
 
     void AssignGameObject(string name, Vector3 newPosition)
@@ -146,20 +113,8 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
         if (arObjectsToPlace != null)
         {
             GameObject goARObject = arObjects[name];
-            //goARObject.SetActive(true);
             goARObject.transform.position = newPosition;
             goARObject.transform.localScale = scaleFactor;
-
-            /*
-            foreach (GameObject go in arObjects.Values)
-            {
-                Debug.Log($"Go in arObjects.Values: {go.name}");
-                if (go.name != name)
-                {
-                    go.SetActive(false);
-                }
-            }
-            */
         }
     }
 }
