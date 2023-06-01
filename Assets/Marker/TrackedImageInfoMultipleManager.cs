@@ -9,7 +9,7 @@ using TMPro;
 public class TrackedImageInfoMultipleManager : MonoBehaviour
 {
     [SerializeField]
-    public static TextMeshProUGUI imageTrackedText;
+    public TextMeshProUGUI imageTrackedText;
 
     [SerializeField]
     private GameObject[] arObjectsToPlace;
@@ -24,15 +24,14 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
 
     private Dictionary<string, GameObject> arObjects = new Dictionary<string, GameObject>();
 
+    private GameObject newARObject;
     private void Awake()
     {
         m_TrackedImageManager = GetComponent<ARTrackedImageManager>();
 
         foreach (GameObject arObject in arObjectsToPlace)
         {
-            GameObject newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
-            AppManager appManager = newARObject.transform.GetChild(0).GetChild(0).GetComponent<AppManager>();
-            appManager.LoadResources();
+            newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
             newARObject.name = arObject.name;
             arObjects.Add(arObject.name, newARObject);
             newARObject.SetActive(false);
@@ -43,8 +42,6 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
     void OnEnable()
     {
         m_TrackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-        
-
     }
 
     void OnDisable()
@@ -76,7 +73,7 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
                 continue;
             }
 
-            imageTrackedText.text = "Nothing tracked";
+            // imageTrackedText.text = "Nothing tracked";
 
             arObject.Value.SetActive(false);
         }
@@ -98,6 +95,8 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
         {
             imageTrackedText.text = trackedImage.referenceImage.name;
             mapUserWay.ShowLastPosition(imageTrackedText.text);
+            AppManager appManager = newARObject.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
+            appManager.LoadResources(imageTrackedText.text);
 
             arObjects[trackedImage.referenceImage.name].SetActive(true);
 
