@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -36,11 +34,14 @@ public class MapUserWay : MonoBehaviour
 
     public void ShowLastPosition(string lastTrackedClassName)
     {
-        if(prelastTrackedClassName != ""){
+        if(prelastTrackedClassName != "")
+        {
             GameObject.Find(prelastTrackedClassName).GetComponent<MeshRenderer>().material = unselectedMaterial;
         }
-        
-        GameObject.Find(lastTrackedClassName).GetComponent<MeshRenderer>().material = userPositionMaterial;   
-        prelastTrackedClassName = lastTrackedClassName;
+        if ((lastTrackedClassName == "Impress-1-Human") && (lastTrackedClassName == "Impress-1-Robot"))
+        {
+            GameObject.Find(lastTrackedClassName).GetComponent<MeshRenderer>().material = userPositionMaterial;   
+            prelastTrackedClassName = lastTrackedClassName;
+        }
     }
 }

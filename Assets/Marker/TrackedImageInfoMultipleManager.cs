@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.XR;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
 using TMPro;
@@ -19,6 +16,12 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
 
     [SerializeField]
     private Vector3 scaleFactor = new Vector3(0.1f, 0.1f, 0.1f);
+
+    [SerializeField]
+    private MapUserWay mapUserWay;
+
+    [SerializeField]
+    private AppManager appManager;
 
     private ARTrackedImageManager m_TrackedImageManager;
 
@@ -41,6 +44,8 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
     void OnEnable()
     {
         m_TrackedImageManager.trackedImagesChanged += OnTrackedImagesChanged;
+        
+
     }
 
     void OnDisable()
@@ -93,6 +98,10 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
             imageTrackedText.text = trackedImage.referenceImage.name;
+            string className = imageTrackedText.text;
+            
+            mapUserWay.ShowLastPosition(className);
+            appManager.LoadResources(imageTrackedText.text);
 
             arObjects[trackedImage.referenceImage.name].SetActive(true);
 
@@ -105,9 +114,6 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
         {
            
         }*/
-
-
-
 
         /*foreach (GameObject go in arObjects.Values)
         {
