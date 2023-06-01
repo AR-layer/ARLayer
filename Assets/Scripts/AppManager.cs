@@ -12,8 +12,8 @@ public class AppManager : MonoBehaviour
 
     private Dictionary<string, int> pictures = new Dictionary<string, int>()
     {
-        {"Human", 0 },
-        {"Robot", 1 }
+        {"Impress-1-Human", 0 },
+        {"Impress-1-Robot", 1 }
     };
 
     public void LoadResources(string className)
