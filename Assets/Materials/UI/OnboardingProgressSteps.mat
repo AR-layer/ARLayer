@@ -72,6 +72,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AddColor: 0.04
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _BumpScale: 1
@@ -101,11 +102,11 @@ Material:
     - _alpha: 0.698
     - _count: 5
     - _fieldSize: 0.6
-    - _index: 0.21368794
+    - _index: 3.999991
     - _index_field_size: 0.75
     - _stepColor: 0.15
     - _steps: 5
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
