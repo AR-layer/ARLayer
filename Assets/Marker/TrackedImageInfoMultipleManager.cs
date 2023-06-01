@@ -95,11 +95,17 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
         {
             imageTrackedText.text = trackedImage.referenceImage.name;
             mapUserWay.ShowLastPosition(imageTrackedText.text);
-            AppManager appManager = newARObject.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
+            AppManager appManager;
+            if (imageTrackedText.text.StartsWith("it"))
+            {
+                appManager = newARObject.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
+            }
+            else
+            {
+                appManager = newARObject.transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
+            }
             appManager.LoadResources(imageTrackedText.text);
-
             arObjects[trackedImage.referenceImage.name].SetActive(true);
-
             AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position);
         }
 
