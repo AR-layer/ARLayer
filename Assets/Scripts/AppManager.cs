@@ -51,7 +51,7 @@ public class AppManager : MonoBehaviour
         int number = 0;
         try
         {
-            number = 2;
+            number = GetClassNumber("Human");
             appConfig = Resources.Load<AppConfig>("Data/ClassConfig");
         }
         catch (Exception)
