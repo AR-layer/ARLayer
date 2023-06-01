@@ -38,10 +38,10 @@ public class MapUserWay : MonoBehaviour
         {
             GameObject.Find(prelastTrackedClassName).GetComponent<MeshRenderer>().material = unselectedMaterial;
         }
-        if ((lastTrackedClassName == "Impress-1-Human") && (lastTrackedClassName == "Impress-1-Robot"))
+        if (lastTrackedClassName.StartsWith("it"))
         {
-            GameObject.Find(lastTrackedClassName).GetComponent<MeshRenderer>().material = userPositionMaterial;   
-            prelastTrackedClassName = lastTrackedClassName;
+            GameObject.Find(lastTrackedClassName.ToUpper()).GetComponent<MeshRenderer>().material = userPositionMaterial;
+            prelastTrackedClassName = lastTrackedClassName.ToUpper();
         }
     }
 }
