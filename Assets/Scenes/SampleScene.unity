@@ -520,9 +520,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   imageTrackedText: {fileID: 1970393289}
   arObjectsToPlace:
-  - {fileID: 5338593576791992455, guid: 19ce9943040a2d34d9669e859dc9660e, type: 3}
-  - {fileID: 1867907120447635367, guid: 335998c24f689e941ba37fdbd05d4fb6, type: 3}
+  - {fileID: 2180380416937151797, guid: 335998c24f689e941ba37fdbd05d4fb6, type: 3}
+  - {fileID: 1552013075589278280, guid: 3b930a14368380841a55eee783151da4, type: 3}
   scaleFactor: {x: 0.1, y: 0.1, z: 0.1}
+  mapUserWay: {fileID: 0}
+  appManager: {fileID: 0}
 --- !u!1 &502597259
 GameObject:
   m_ObjectHideFlags: 0
