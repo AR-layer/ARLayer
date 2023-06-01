@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class MapUserWay : MonoBehaviour
-{
+{ 
     public Material selectedMaterial;
     public Material unselectedMaterial;
-    
+    public Material userPositionMaterial;
+
+
     private string prevRoomName = "";
+    private string prelastTrackedClassName = "";
 
     public void ShowTargetRoom()
     {
@@ -29,5 +32,15 @@ public class MapUserWay : MonoBehaviour
         MeshRenderer meshRenderer = changeAreaComponent.GetComponent<MeshRenderer>();
         Material oldMaterial = meshRenderer.material;
         meshRenderer.material = selectedMaterial;
+    }
+
+    public void ShowLastPosition(string lastTrackedClassName)
+    {
+        if(prelastTrackedClassName != ""){
+            GameObject.Find(prelastTrackedClassName).GetComponent<MeshRenderer>().material = unselectedMaterial;
+        }
+        
+        GameObject.Find(lastTrackedClassName).GetComponent<MeshRenderer>().material = userPositionMaterial;   
+        prelastTrackedClassName = lastTrackedClassName;
     }
 }
