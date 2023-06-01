@@ -10,14 +10,16 @@ public class AppManager : MonoBehaviour
     [SerializeField] private GameObject author;
     [SerializeField] private GameObject text;
 
+
     private Dictionary<string, int> pictures = new Dictionary<string, int>()
     {
         {"Impress-1-Human", 0 },
         {"Impress-1-Robot", 1 }
     };
 
-    public void LoadResources(string className)
+    public void LoadResources()
     {
+        string className = TrackedImageInfoMultipleManager.imageTrackedText.text;
         int number = 0;
         try
         {

@@ -9,7 +9,7 @@ using TMPro;
 public class TrackedImageInfoMultipleManager : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI imageTrackedText;
+    public static TextMeshProUGUI imageTrackedText;
 
     [SerializeField]
     private GameObject[] arObjectsToPlace;
@@ -19,9 +19,6 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
 
     [SerializeField]
     private MapUserWay mapUserWay;
-
-    [SerializeField]
-    private AppManager appManager;
 
     private ARTrackedImageManager m_TrackedImageManager;
 
@@ -34,6 +31,8 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
         foreach (GameObject arObject in arObjectsToPlace)
         {
             GameObject newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
+            AppManager appManager = newARObject.transform.GetChild(0).GetChild(0).GetComponent<AppManager>();
+            appManager.LoadResources();
             newARObject.name = arObject.name;
             arObjects.Add(arObject.name, newARObject);
             newARObject.SetActive(false);
@@ -98,10 +97,7 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
             imageTrackedText.text = trackedImage.referenceImage.name;
-            string className = imageTrackedText.text;
-            
-            mapUserWay.ShowLastPosition(className);
-            appManager.LoadResources(imageTrackedText.text);
+            mapUserWay.ShowLastPosition(imageTrackedText.text);
 
             arObjects[trackedImage.referenceImage.name].SetActive(true);
 
