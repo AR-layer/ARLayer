@@ -27,4 +27,3 @@ public class Pagination : MonoBehaviour
         material.SetFloat("_index", currentIndex);
     }
 }
-
