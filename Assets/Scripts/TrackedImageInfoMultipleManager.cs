@@ -1,7 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.UI;
 using TMPro;
 
 
@@ -19,19 +23,23 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
 
     [SerializeField]
     private MapUserWay mapUserWay;
+	
+	[SerializeField] AssetReference classData;
+	[SerializeField] AssetReference pictureData;
 
     private ARTrackedImageManager trackedImageManager;
 
     private Dictionary<string, GameObject> arObjects = new Dictionary<string, GameObject>();
-
-    private GameObject newARObject;
+    	
+	private static GameObject activeObj;
+	
     private void Awake()
     {
         trackedImageManager = GetComponent<ARTrackedImageManager>();
 
         foreach (GameObject arObject in arObjectsToPlace)
         {
-            newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
+            var newARObject = Instantiate(arObject, Vector3.zero, Quaternion.identity);
             newARObject.name = arObject.name;
             arObjects.Add(arObject.name, newARObject);
             newARObject.SetActive(false);
@@ -64,6 +72,7 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
 
     void OnTrackedImagesChanged(ARTrackedImagesChangedEventArgs eventArgs)
     {
+		
         foreach (var arObject in arObjects)
         {
             if (IsInList(arObject.Key, eventArgs.added) ||
@@ -71,40 +80,80 @@ public class TrackedImageInfoMultipleManager : MonoBehaviour
             {
                 continue;
             }
+			
             arObject.Value.SetActive(false);
+			
+			if(arObject.Key == activeObj?.name)
+			{
+				activeObj = null;
+			}
         }
 
+			
         foreach (ARTrackedImage trackedImage in eventArgs.updated)
         {
-            UpdateARImage(trackedImage);
+            UpdateARImage(trackedImage, true);
         }
+		
+		if(activeObj != null)
+		{
+			return;
+		}
 
         foreach (ARTrackedImage trackedImage in eventArgs.added)
         {
-            UpdateARImage(trackedImage);
+            UpdateARImage(trackedImage, false);
         }
     }
 
-    private void UpdateARImage(ARTrackedImage trackedImage)
+	private void UpdateARImage(ARTrackedImage trackedImage, bool isUpdated)
     {
         if (trackedImage.trackingState == TrackingState.Tracking)
         {
-            imageTrackedText.text = trackedImage.referenceImage.name;
-            mapUserWay.ShowLastPosition(imageTrackedText.text);
-            AppManager appManager;
-            if (imageTrackedText.text.StartsWith("it"))
-            {
-                appManager = arObjects[imageTrackedText.text].transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
-            }
-            else
-            {
-                appManager = arObjects[imageTrackedText.text].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
-            }
-            appManager.LoadResources(imageTrackedText.text);
-            arObjects[trackedImage.referenceImage.name].SetActive(true);
-            AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position);
+			if(activeObj==null)
+			{
+				imageTrackedText.text = trackedImage.referenceImage.name;
+				mapUserWay.ShowLastPosition(imageTrackedText.text);
+				AppManager appManager;
+				if (imageTrackedText.text.StartsWith("it"))
+				{
+					appManager = arObjects[imageTrackedText.text].transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
+				}
+				else
+				{
+					appManager = arObjects[imageTrackedText.text].transform.GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetComponent<AppManager>();
+				}
+				
+				LoadResources(imageTrackedText.text, appManager);
+				
+				arObjects[trackedImage.referenceImage.name].SetActive(true);
+				activeObj = arObjects[trackedImage.referenceImage.name];
+			}
+            
+			if(arObjects[trackedImage.referenceImage.name].activeSelf)
+			{
+				AssignGameObject(trackedImage.referenceImage.name, trackedImage.transform.position);
+			}
         }
     }
+	
+	private async void LoadResources(string className, AppManager appManager)
+    {
+		AsyncOperationHandle<AppConfig> handle = (className.StartsWith("it")?classData:pictureData).LoadAssetAsync<AppConfig>();
+		
+        await handle.Task;
+		
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            AppConfig data = handle.Result;
+            
+			appManager.LoadResources(className, data);
+			
+            Addressables.Release(handle);
+			
+        }
+    }
+	
 
     void AssignGameObject(string name, Vector3 newPosition)
     {

@@ -17,28 +17,25 @@ public class AppManager : MonoBehaviour
         {"Impress-1-Robot", 1 }
     };
     
-    public void LoadResources(string className)
+	public void LoadResources(string className, AppConfig appConfig)
     {
-        int number = 0;
-        try
+        int number;
+		
+		try
         {
             number = GetClassNumber(className);
-            appConfig = Resources.Load<AppConfig>("Data/ClassConfig");
         }
         catch (Exception)
         {
             number = pictures[className];
-            appConfig = Resources.Load<AppConfig>("Data/PictureConfig");
         }
-        finally
-        {
-            var idText = id.GetComponent<TextMeshProUGUI>();
-            var authorName = author.GetComponent<TextMeshProUGUI>();
-            var textCont = text.GetComponent<TextMeshProUGUI>();
-            idText.text = appConfig.content[number].id;
-            authorName.text = appConfig.content[number].person;
-            textCont.text = appConfig.content[number].textContent;
-        }
+        
+		var idText = id.GetComponent<TextMeshProUGUI>();
+		var authorName = author.GetComponent<TextMeshProUGUI>();
+		var textCont = text.GetComponent<TextMeshProUGUI>();
+		idText.text = appConfig.content[number].id;
+		authorName.text = appConfig.content[number].person;
+		textCont.text = appConfig.content[number].textContent;
     }
 
     private int GetClassNumber(string className)
