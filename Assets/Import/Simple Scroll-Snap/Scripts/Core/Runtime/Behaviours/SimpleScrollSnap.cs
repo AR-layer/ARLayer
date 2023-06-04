@@ -764,21 +764,36 @@ namespace DanielLochner.Assets.SimpleScrollSnap
         private int GetNearestPanel()
         {
             float[] distances = new float[NumberOfPanels];
+            float[] distances_copy = new float[NumberOfPanels];
             for (int i = 0; i < Panels.Length; i++)
             {
                 distances[i] = GetDisplacementFromCenter(i).magnitude;
             }
-
             int nearestPanel = 0;
-            float minDistance = Mathf.Min(distances);
+
+            if (SelectedPanel == 0 && ((releaseDirection == Direction.Right && GetDisplacementFromCenter(0).x > 0f) || (releaseDirection == Direction.Up && GetDisplacementFromCenter(0).y > 0f)))
+            {
+                return 0;
+            }
+            else if ((SelectedPanel == (NumberOfPanels-1)) && ((releaseDirection == Direction.Left && GetDisplacementFromCenter(NumberOfPanels - 1).x < 0f) || (releaseDirection == Direction.Down && GetDisplacementFromCenter(0).y < 0f)))
+            {
+                return NumberOfPanels - 1;
+            }
+            
+            distances.CopyTo(distances_copy, 0);
+            Array.Sort(distances_copy);
+
+            float preMinDistance = distances_copy[1];
+
             for (int i = 0; i < Panels.Length; i++)
             {
-                if (minDistance == distances[i])
+                if (preMinDistance == distances[i])
                 {
                     nearestPanel = i;
                     break;
                 }
             }
+
             return nearestPanel;
         }
         private void GetVelocity()
