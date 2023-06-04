@@ -66,11 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Artificial intelligence (AI) is intelligence perceiving, synthesizing,
-    and inferring information demonstrated by machines, as opposed to intelligence
-    displayed by non-human animals or by humans. Example tasks in which this is done
-    include speech recognition, computer vision, translation between (natural) languages,
-    as well as other mappings of inputs.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a16dcac8a6674642973bff7dbd29f82, type: 2}
   m_sharedMaterial: {fileID: -3864528256857343559, guid: 4a16dcac8a6674642973bff7dbd29f82,
@@ -206,9 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Authors
-
-'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95548a2af8e6101479b458f31000401f, type: 2}
   m_sharedMaterial: {fileID: 644707171927897756, guid: 95548a2af8e6101479b458f31000401f,
@@ -338,7 +332,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff126b2b473d06645b1f835a474fe80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TokenStyleList: []
+  TokenStyleList:
+  - Primary
+  - Info
+  - Success
+  - Error
+  - Warning
+  - Grey
+  - Divider
+  - Text
+  - On surface
+  - Surface
+  - Outline border
+  - Transparent
   TokenFamily: Surface
   TokenList:
   - Panel
@@ -568,7 +574,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff126b2b473d06645b1f835a474fe80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TokenStyleList: []
+  TokenStyleList:
+  - Primary
+  - Info
+  - Success
+  - Error
+  - Warning
+  - Grey
+  - Divider
+  - Text
+  - On surface
+  - Surface
+  - Outline border
+  - Transparent
   TokenFamily: Surface
   TokenList:
   - Panel
@@ -800,7 +818,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff126b2b473d06645b1f835a474fe80d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TokenStyleList: []
+  TokenStyleList:
+  - Primary
+  - Info
+  - Success
+  - Error
+  - Warning
+  - Grey
+  - Divider
+  - Text
+  - On surface
+  - Surface
+  - Outline border
+  - Transparent
   TokenFamily: Surface
   TokenList:
   - Panel
@@ -1072,7 +1102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Picture name
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 95548a2af8e6101479b458f31000401f, type: 2}
   m_sharedMaterial: {fileID: 644707171927897756, guid: 95548a2af8e6101479b458f31000401f,
